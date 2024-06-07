@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Mole from './Mole';
 import EmptySlot from './EmptySlot'; 
 
-const MoleContainer = ({ score, setScore }) => {
+const MoleContainer = ({ score, setScore, paused }) => {
     const [displayMole, setDisplayMole] = useState(false);
 
     const handleBop = () => {
@@ -12,7 +12,7 @@ const MoleContainer = ({ score, setScore }) => {
 
     const displayComponent = displayMole ?
         <Mole setDisplayMole={setDisplayMole} handleBop={handleBop} /> :
-        <EmptySlot setDisplayMole={setDisplayMole} />;
+        <EmptySlot setDisplayMole={setDisplayMole} paused={paused} />;
 
     return (
         <div>

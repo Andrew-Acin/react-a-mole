@@ -1,14 +1,16 @@
 import { useEffect } from "react";
 import moleHillImg from "./assets/molehill.png";
 
-function EmptySlot({ setDisplayMole }) {
+function EmptySlot({ setDisplayMole, paused }) {
     useEffect(() => {
+        if (paused) return
+
         let randSeconds = Math.ceil(Math.random() * 5000);
         let timer = setTimeout(() => {
             setDisplayMole(true);
         }, randSeconds);
         return () => clearTimeout(timer);
-    }, [setDisplayMole]);
+    }, [paused, setDisplayMole]);
 
     return (
         <div>

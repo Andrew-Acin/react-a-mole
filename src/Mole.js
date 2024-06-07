@@ -1,14 +1,16 @@
 import { useEffect } from "react";
 import moleImg from "./assets/mole.png";
 
-function Mole({ setDisplayMole, handleBop }) {
+function Mole({ setDisplayMole, handleBop, paused }) {
     useEffect(() => {
+        if (paused) return
+        
         let randSeconds = Math.ceil(Math.random() * 5000);
         let timer = setTimeout(() => {
             setDisplayMole(false);
         }, randSeconds);
         return () => clearTimeout(timer);
-    }, [setDisplayMole]);
+    }, [paused, setDisplayMole]);
 
     return (
         <div>
